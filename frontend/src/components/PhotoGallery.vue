@@ -4,12 +4,10 @@
       <div v-for="n in 6" :key="n" class="aspect-square bg-gold-100 rounded-2xl animate-pulse" />
     </div>
 
-    <div v-else-if="photos.length > 0" class="columns-2 md:columns-3 gap-3 space-y-3">
-      <div
-        v-for="(photo, idx) in photos" :key="photo.id"
+    <div v-else-if="photos && photos.length > 0" class="columns-2 md:columns-3 gap-3 space-y-3">
+      <div v-for="(photo, idx) in photos" :key="photo.id"
         class="break-inside-avoid rounded-2xl overflow-hidden cursor-pointer group relative shadow-md hover:shadow-xl transition-all duration-300"
-        @click="openLightbox(idx)"
-      >
+        @click="openLightbox(idx)">
         <img
           :src="photo.url"
           :alt="photo.caption || `Foto ${idx + 1}`"
@@ -53,7 +51,7 @@
             class="max-w-full max-h-[85vh] object-contain rounded-xl shadow-2xl"
           />
 
-          <button v-if="lightboxIndex < photos.length - 1" @click="nextPhoto" class="absolute right-4 text-white/80 hover:text-white transition p-2">
+          <button v-if="photos && lightboxIndex < photos.length - 1" @click="nextPhoto" class="absolute right-4 text-white/80 hover:text-white transition p-2">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
             </svg>
@@ -79,9 +77,10 @@ const lightboxIndex = ref(null)
 const fetchPhotos = async () => {
   try {
     const { data } = await api.get('/gallery')
-    photos.value = data.data
+    photos.value = Array.isArray(data.data) ? data.data : []
   } catch {
     console.error('Gagal memuat galeri')
+    photos.value=[] //fallback kalau error
   } finally {
     loading.value = false
   }

@@ -18,7 +18,7 @@
       </div>
 
       <!-- Upload queue -->
-      <div v-if="uploadQueue.length > 0" class="mt-4 space-y-2">
+      <div v-if="uploadQueue && uploadQueue.length > 0" class="mt-4 space-y-2">
         <div v-for="item in uploadQueue" :key="item.id" class="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
           <img :src="item.preview" class="w-12 h-12 object-cover rounded-lg flex-shrink-0" />
           <div class="flex-1 min-w-0">

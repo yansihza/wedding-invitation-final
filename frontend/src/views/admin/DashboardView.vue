@@ -58,7 +58,7 @@
             <span class="text-xs text-gray-300 font-sans ml-auto flex-shrink-0">{{ timeAgo(guest.created_at) }}</span>
           </div>
         </div>
-        <div v-if="recentGuests.length === 0" class="px-6 py-8 text-center text-gray-400 font-sans text-sm">
+        <div v-if="recentGuests && recentGuests.length === 0" class="px-6 py-8 text-center text-gray-400 font-sans text-sm">
           Belum ada ucapan
         </div>
       </div>
@@ -93,17 +93,17 @@ onMounted(async () => {
       api.get('/config'),
     ])
 
-    recentGuests.value = guestsRes.data.data
+    recentGuests.value = Array.isArray(guestsRes.data.data) ? guestsRes.data.data : []
     weddingDate.value = configRes.data.data.akad_date
 
     // Calculate stats
-    const allGuests = guestsRes.data.data
-    stats.value.total = guestsRes.data.pagination.total
+    const allGuests = Array.isArray(guestsRes.data.data) ? guestsRes.data.data : []
+    stats.value.total = guestsRes.data.pagination.total || 0
     allGuests.forEach(g => {
-      if (g.attendance === 'hadir') stats.value.hadir++
-      else if (g.attendance === 'tidak_hadir') stats.value.tidak_hadir++
-      else stats.value.masih_ragu++
-    })
+    if (g.attendance === 'hadir') stats.value.hadir++
+    else if (g.attendance === 'tidak_hadir') stats.value.tidak_hadir++
+    else stats.value.masih_ragu++
+  })
   } catch (err) {
     console.error(err)
   }

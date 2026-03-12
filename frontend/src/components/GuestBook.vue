@@ -153,10 +153,12 @@ const fetchGuests = async (reset = false) => {
   loading.value = true
   try {
     const { data } = await api.get(`/guestbook?page=${page.value}&limit=5`)
-    guests.value = reset ? data.data : [...guests.value, ...data.data]
+    const newGuests = Array.isArray(data.data) ? data.data : []
+    guests.value = reset ? newGuests : [...guests.value, ...newGuests]
     hasMore.value = data.pagination.page < data.pagination.totalPages
   } catch {
     toast.error('Gagal memuat ucapan')
+    guest.value = [] //fallback kalau error
   } finally {
     loading.value = false
   }
@@ -167,7 +169,8 @@ const loadMore = async () => {
   loadingMore.value = true
   try {
     const { data } = await api.get(`/guestbook?page=${page.value}&limit=5`)
-    guests.value = [...guests.value, ...data.data]
+    const newGuests = Array.isArray(data.data) ? data.data : []
+    guests.value = [...guests.value, ...newGuests]
     hasMore.value = data.pagination.page < data.pagination.totalPages
   } catch {
     toast.error('Gagal memuat ucapan')
@@ -175,6 +178,7 @@ const loadMore = async () => {
     loadingMore.value = false
   }
 }
+
 
 const submitGuest = async () => {
   loading.value = true

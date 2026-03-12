@@ -79,8 +79,8 @@
                 </div>
               </td>
             </tr>
-            <tr v-if="!loading && guests.length === 0">
-              <td colspan="5" class="px-6 py-12 text-center text-gray-400 font-sans">Tidak ada ucapan ditemukan</td>
+            <tr v-if="!loading && (guests?.length ?? 0) === 0">
+            <td colspan="5">Tidak ada ucapan ditemukan</td>
             </tr>
           </tbody>
         </table>
@@ -130,7 +130,8 @@ const fetchGuests = async (reset = false) => {
         ...(search.value ? { search: search.value } : {}),
       })
       const { data } = await api.get(`/admin/guestbook?${params}`)
-      guests.value = data.data
+      guests.value = Array.isArray(data.data) ? data.data : []
+      pagination.value = data.pagination || { page: 1, total: 0, totalPages: 1, limit: 20 }
       pagination.value = data.pagination
     } catch {
       toast.error('Gagal memuat data')
