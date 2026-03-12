@@ -10,7 +10,7 @@
       <h3 class="font-serif text-xl text-brown-700 mb-4">Transfer Bank</h3>
 
       <div v-if="qrData" class="mb-4">
-        <img src="https://res.cloudinary.com/dvdct0a0h/image/upload/v1773041838/foto-ferdyan_asdpfe.jpg" alt="QR Code Bank" class="w-40 h-40 mx-auto rounded-xl shadow-md border border-gold-200" />
+        <img src="https://res.cloudinary.com/dvdct0a0h/image/upload/v1773342681/qris_xj40pw.png" alt="QR Code Bank" class="w-40 h-40 mx-auto rounded-xl shadow-md border border-gold-200" />
       </div>
 
       <div class="bg-ivory-100 rounded-xl p-4 text-left space-y-2 mb-4">
@@ -75,7 +75,7 @@
               <p class="font-serif font-semibold text-brown-700">{{ config.ovo_number }}</p>
         
             <div v-if="qrData" class="mb-4">
-        <img src="https://res.cloudinary.com/dvdct0a0h/image/upload/v1773041838/foto-ferdyan_asdpfe.jpg" alt="QR Code Bank" class="w-40 h-40 mx-auto rounded-xl shadow-md border border-gold-200" />
+        <img src="https://res.cloudinary.com/dvdct0a0h/image/upload/v1773342554/gopay_c4nh1l.jpg" alt="QR Code Bank" class="w-40 h-40 mx-auto rounded-xl shadow-md border border-gold-200" />
       </div>
     </div>
   </div>
