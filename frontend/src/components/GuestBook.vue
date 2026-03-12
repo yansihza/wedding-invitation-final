@@ -158,7 +158,7 @@ const fetchGuests = async (reset = false) => {
     hasMore.value = data.pagination.page < data.pagination.totalPages
   } catch {
     toast.error('Gagal memuat ucapan')
-    guest.value = [] //fallback kalau error
+    guests.value = [] //fallback kalau error
   } finally {
     loading.value = false
   }
