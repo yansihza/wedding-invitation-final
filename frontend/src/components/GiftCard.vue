@@ -7,12 +7,13 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
         </svg>
       </div>
-      <h3 class="font-serif text-xl text-brown-700 mb-4">Transfer Bank</h3>
-
+      <h3 class="font-serif text-xl text-brown-700 mb-4">SCAN QRIS </h3>
+       <h3 class="font-serif text-xl text-brown-700 mb-4">Yan's Garage</h3>
       <div v-if="qrData" class="mb-4">
         <img src="https://res.cloudinary.com/dvdct0a0h/image/upload/v1773342681/qris_xj40pw.png" alt="QR Code Bank" class="w-40 h-40 mx-auto rounded-xl shadow-md border border-gold-200" />
       </div>
 
+       <h3 class="font-serif text-xl text-brown-700 mb-4">Transfer Bank</h3>
       <div class="bg-ivory-100 rounded-xl p-4 text-left space-y-2 mb-4">
         <div class="flex justify-between items-center">
           <span class="text-sm font-sans text-brown-400">Bank</span>
@@ -73,10 +74,6 @@
             <div class="text-left">
               <p class="text-xs text-brown-400 font-sans">GoPay</p>
               <p class="font-serif font-semibold text-brown-700">{{ config.ovo_number }}</p>
-        
-            <div v-if="qrData" class="mb-4">
-        <img src="https://res.cloudinary.com/dvdct0a0h/image/upload/v1773342554/gopay_c4nh1l.jpg" alt="QR Code Bank" class="w-40 h-40 mx-auto rounded-xl shadow-md border border-gold-200" />
-      </div>
     </div>
   </div>
 
