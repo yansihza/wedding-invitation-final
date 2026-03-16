@@ -8,7 +8,7 @@
         </svg>
       </div>
       <h3 class="font-serif text-xl text-brown-700 mb-4">SCAN QRIS </h3>
-       <h3 class="font-serif text-xl text-brown-700 mb-4">Yan's Garage</h3>
+       <h6 class="font-serif text-xl text-brown-700 mb-4">Yan's Garage</h6>
       <div v-if="qrData" class="mb-4">
         <img src="https://res.cloudinary.com/dvdct0a0h/image/upload/v1773342681/qris_xj40pw.png" alt="QR Code Bank" class="w-40 h-40 mx-auto rounded-xl shadow-md border border-gold-200" />
       </div>
